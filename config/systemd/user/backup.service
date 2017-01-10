@@ -1,0 +1,9 @@
+[Unit]
+Description=Backup of hard drives
+
+[Service]
+Type=oneshot
+ExecStart=/usr/bin/rsync -a --delete ~/ ~/ownCloud/backups/home_dir
+
+[Install]
+WantedBy=default.target

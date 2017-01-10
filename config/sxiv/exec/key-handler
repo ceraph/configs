@@ -1,0 +1,15 @@
+#!/bin/sh
+
+while read file
+do
+        case "$1" in
+        "d")
+                mv "$file" ~/.trash ;;
+        "r")
+                convert -rotate 90 "$file" "$file" ;;
+        "c")
+                echo -n "$file" | xclip -selection clipboard ;;
+        "w")
+                nitrogen --save --set-zoom-fill "$file" ;;
+        esac
+done
