@@ -7,30 +7,34 @@
 call plug#begin('~/.config/nvim/plugged')
 
 Plug 'scrooloose/nerdcommenter'
-Plug 'scrooloose/nerdtree'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-fugitive'
 Plug 'majutsushi/tagbar'
-Plug 'kien/ctrlp.vim'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'suan/vim-instant-markdown'
+Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --bin' }
+Plug 'junegunn/fzf.vim'
 
 " Completion:
-"Plug 'Valloric/YouCompleteMe'
-"Plug 'Shougo/deoplete.nvim'
+Plug 'Valloric/YouCompleteMe'
+Plug 'rdnetto/YCM-Generator', { 'branch': 'stable' }
+"Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 
 " Notebook:
 Plug 'bfredl/nvim-ipy'
+Plug 'vimwiki/vimwiki'
 
 " Autoclosing:
-"Plug 'jiangmiao/auto-pairs' # Maybe check out in the future.
+"Plug 'jiangmiao/auto-pairs' " Maybe check out in the future.
 Plug 'Raimondi/delimitMate'
 
 " Syntax:
 Plug 'PotatoesMaster/i3-vim-syntax'
 Plug 'vim-perl/vim-perl', { 'for': 'perl', 'do': 'make clean carp dancer highlight-all-pragmas moose test-more try-tiny' }
 Plug 'JuliaLang/julia-vim'
+Plug 'octol/vim-cpp-enhanced-highlight'
+"Plug 'arakashic/chromatica.nvim' "Not ready yet.
 
 " LaTeX:
 
@@ -46,12 +50,12 @@ Plug 'junegunn/vim-easy-align'
 
 " Colorschemes:
 Plug 'scwood/vim-hybrid'
+Plug 'lifepillar/vim-solarized8'
 Plug 'kristijanhusak/vim-hybrid-material'
 Plug 'mkarmona/colorsbox'
 Plug 'altercation/vim-colors-solarized'
 Plug 'morhetz/gruvbox'
-Plug 'vim-scripts/ScrollColors'
-Plug 'rakr/vim-two-firewatch'
+
 
 " TOTRY List:
 "Plug 'scrooloose/syntastic'
@@ -65,8 +69,9 @@ call plug#end()
 " VisualStyles:
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 let $NVIM_TUI_ENABLE_TRUE_COLOR=1
-set background=dark
-colo hybrid
+set termguicolors
+color hybrid_material
+set bg=dark
 let g:enable_bold_font = 1 " from hyrid-material
 let g:airline_theme = "hybrid"
 
@@ -93,23 +98,41 @@ if has ('gui_running')
    set guicursor+=a:blinkon0        " disable cursor blinking
 endif
 
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" FZF:
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+nmap <C-p> :FZF<CR>
+
+" Mapping selecting mappings
+nmap <leader><tab> <plug>(fzf-maps-n)
+xmap <leader><tab> <plug>(fzf-maps-x)
+omap <leader><tab> <plug>(fzf-maps-o)
+
+
+
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " YouCompleteMe:
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " key mappings
-"nmap <C-]> :YcmCompleter GoTo<CR> " doesn't work as good as ctags
+"nmap <C-]> :YcmCompleter GoTo<CR> " doesn't work well (uses jump stack)
 "let g:ycm_collect_identifiers_from_tags_files = 1
 
 " use Eclim for omnicompletion
 "let g:EclimCompletionMethod = 'omnifunc'
-"map <F8> :YcmDiags<CR>
+map <F8> :YcmDiags<CR>
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Deoplete:
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-let g:deoplete#enable_at_startup = 1
+"let g:deoplete#enable_at_startup = 1
 
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" CPP Enhance Syntax Highlighting:
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+let g:cpp_concepts_highlight = 1
+let g:cpp_class_scope_highlight = 1
+let c_no_curly_error = 1
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Airline:
@@ -121,26 +144,13 @@ set laststatus=2
 " Ctags:
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " change working directory to the one of the current file
-map <F9> :silent !ctags -R -f ./.tags<CR>
+map <F9> :silent !ctags -R --c++-kinds=+p --fields=+iaS --extra=+q -f ./.tags . <CR>
 set tags=./.tags,.tags;$HOME
-
-
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Nerdtree:
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Nerdtree at start
-"autocmd VimEnter * NERDTree
-
-"map <F3> :NERDTreeToggle<CR>
-let NERDTreeChDirMode = 2
-let NERDTreeDirArrows = 0
-
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " JavaScriptSyntax:
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 let g:used_javascript_libs = 'jquery, underscore, backbone, requirejs, nodejs'
-
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " CtrlP:
@@ -159,13 +169,11 @@ map <F5> :CtrlPClearCache<CR>
 map <F4> :TagbarToggle<CR>
 let g:tagbar_width = 35
 
-
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " VimEasyAlign:
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 nmap ga <Plug>(EasyAlign)
 xmap ga <Plug>(EasyAlign)
-
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Formatting:
@@ -266,3 +274,10 @@ vnoremap <silent> # :<C-U>
   \gvy?<C-R><C-R>=substitute(
   \escape(@", '?\.*$^~['), '\_s\+', '\\_s\\+', 'g')<CR><CR>
   \gV:call setreg('"', old_reg, old_regtype)<CR>
+
+"Search for .vim file (local config).
+let b:thisdir=expand("%:p:h")
+let b:vim=b:thisdir."/.vim"
+if (filereadable(b:vim))
+    execute "source ".b:vim
+endif
