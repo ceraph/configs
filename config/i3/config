@@ -157,7 +157,7 @@ new_window pixel 1
 # Power Management
 ###
 
-set $locker i3lock -i /home/ceraph/pics/clouds_milky_way_eclipse_light_68883_2560x1440.png && sleep 1
+set $locker i3lock -e -i /home/ceraph/pics/mountains_sea_ocean4k.png
 
 set $mode_system System: (l) lock, (e) logout, (s) suspend, (h) hibernate, (r) reboot, (Shift+s) shutdown
 mode "$mode_system" {
