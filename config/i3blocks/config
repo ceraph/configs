@@ -40,7 +40,7 @@ command=echo "Hello World"; echo "123"; echo \#0000FF
 # The second parameter overrides the mixer selection
 # See the script for details.
 [volume]
-label=♪
+label= 
 instance=Master
 #instance=PCM
 
@@ -76,6 +76,7 @@ color=#00FF00
 separator=false
 
 [wifi]
+label= 
 instance=wlp4s0
 interval=10
 
