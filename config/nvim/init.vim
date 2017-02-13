@@ -242,12 +242,6 @@ set incsearch
 
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Clipboard:
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"set clipboard+=unnamedplus
-
-
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Misc:
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 let mapleader = ','
@@ -281,3 +275,6 @@ let b:vim=b:thisdir."/.vim"
 if (filereadable(b:vim))
     execute "source ".b:vim
 endif
+
+"Close XML tags
+imap <silent> <C-c> </<C-X><C-O><C-X>
