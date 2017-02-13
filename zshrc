@@ -33,7 +33,7 @@ export SYSTEMD_EDITOR="$VISUAL"
 ################################################################################
 
 # Ranger
-export TERMCMD=termite # usefull for opening programs in a new window
+#export TERMCMD=termite # usefull for opening programs in a new window
 export RANGER_LOAD_DEFAULT_RC=False # load only configs in ~/
 
 rg() {
@@ -46,4 +46,3 @@ rg() {
 
 # Termite
 source /etc/profile.d/vte.sh # Enables ctrl+shift+t for opening new terminal
-

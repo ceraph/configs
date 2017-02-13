@@ -32,7 +32,7 @@ urxvt*saveLines: 3200
 !urxvt.font: xft:Inconsolata:size=14,xft:Symbola
 !urxvt.font: xft:Anonymous\ Pro:size=12,xft:Symbola
 !urxvt.font: xft:Fantasque\ Sans\ Mono:pixelsize=23,xft:Symbola
-urxvt.font: xft:Hermit:pixelsize=18:style=medium,xft:Symbola
+urxvt.font: xft:Hermit:pixelsize=20:style=medium,xft:Symbola
 !urxvt.font: xft:DEC\ Terminal\ Modern:size=14,xft:Symbola
 !urxvt*letterSpace: -1
 !urxvt*lineSpace: 2
