@@ -101,6 +101,7 @@ endif
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " FZF:
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+let g:fzf_history_dir = '~/.local/share/fzf-history'
 nmap <C-p> :FZF<CR>
 
 " Mapping selecting mappings
