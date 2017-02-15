@@ -4,8 +4,10 @@ HISTSIZE=3000
 SAVEHIST=3000
 setopt notify
 bindkey -v
+bindkey '^R' history-incremental-search-backward
 # End of lines configured by zsh-newuser-install
 # The following lines were added by compinstall
+
 zstyle :compinstall filename '/home/sisyphus/.zshrc'
 
 autoload -Uz compinit
