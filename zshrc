@@ -46,3 +46,5 @@ rg() {
 
 # Termite
 source /etc/profile.d/vte.sh # Enables ctrl+shift+t for opening new terminal
+
+for config (~/.zsh/*.zsh) source $config
