@@ -82,21 +82,9 @@ set linespace=2
 set number     " show line numbers
 set cursorline " highlights cursor line
 
-" Remove scrollbars
-set guioptions-=l
-set guioptions-=L
-set guioptions-=r
-set guioptions-=R
-set guioptions-=T
-set guioptions-=m
-
 " Resize vim when window size changes
 au VimResized * exe "normal! \<c-w>="
 
-
-if has ('gui_running')
-   set guicursor+=a:blinkon0        " disable cursor blinking
-endif
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " FZF:
@@ -108,8 +96,6 @@ nmap <C-p> :FZF<CR>
 nmap <leader><tab> <plug>(fzf-maps-n)
 xmap <leader><tab> <plug>(fzf-maps-x)
 omap <leader><tab> <plug>(fzf-maps-o)
-
-
 
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""
