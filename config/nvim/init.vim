@@ -140,14 +140,6 @@ set tags=./.tags,.tags;$HOME
 let g:used_javascript_libs = 'jquery, underscore, backbone, requirejs, nodejs'
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" CtrlP:
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" working directory
-let g:ctrlp_working_path_mode = 'r'
-map <F5> :CtrlPClearCache<CR>
-
-
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Tagbar:
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Tagbar at start
@@ -190,7 +182,6 @@ set cpo+=n
 " visual feedback for line width
 let &colorcolumn="81"
 
-
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Navigation:
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -208,13 +199,11 @@ nnoremap <C-l> <C-w>l
 "nnoremap j gj
 "nnoremap k gk
 
-
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " File Management:
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " autosave files when leaving window
 "au FocusLost * :wa
-
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Search:
@@ -226,7 +215,6 @@ set hlsearch
 set showmatch
 set nowrapscan
 set incsearch
-
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Misc:
