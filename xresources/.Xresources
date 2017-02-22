@@ -148,3 +148,5 @@ rofi.font: Roboto Mono 14
 rofi.lines: 16
 rofi.separator-style: none
 rofi.padding: 20
+
+rofi.run-command: zsh -c "{cmd}"

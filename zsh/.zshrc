@@ -27,11 +27,6 @@ PROMPT="> "
 # Syntax
 source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
-# default editor
-export VISUAL=nvim
-export EDITOR="$VISUAL"
-export SYSTEMD_EDITOR="$VISUAL"
-
 ################################################################################
 
 # Ranger
@@ -45,8 +40,5 @@ rg() {
         exit
     fi
 }
-
-# Termite
-source /etc/profile.d/vte.sh # Enables ctrl+shift+t for opening new terminal
 
 for config (~/.zsh/*.zsh) source $config
