@@ -11,3 +11,6 @@ export SYSTEMD_EDITOR="$VISUAL"
 
 #█▓▒░ Language
 export LANG=en_US.UTF-8
+
+#█▓▒░ Less
+export LESS="-iRS"
