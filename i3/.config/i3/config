@@ -198,3 +198,5 @@ exec --no-startup-id owncloud
 #exec --no-startup-id compton -b
 exec --no-startup-id nitrogen --restore
 exec --no-startup-id unclutter --timeout 3 --ignore-scrolling --fork
+exec --no-startup-id redshift
+exec --no-startup-id pidgin

@@ -2,7 +2,7 @@
 export PATH=$HOME/.local/bin:$PATH
 
 #█▓▒░ Terminal
-export TERMINAL=alacritty
+export TERMINAL=termite
 
 #█▓▒░ Editor
 export VISUAL=nvim

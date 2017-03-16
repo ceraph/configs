@@ -7,7 +7,7 @@ cursor_blink = on
 cursor_shape = block
 dynamic_title = true
 filter_unmatched_urls = true
-font = Hermit 11
+font = Hermit 12
 mouse_autohide = true
 scrollback_lines = 10000
 scroll_on_keystroke = true
@@ -22,7 +22,7 @@ urgent_on_bell = true
 foreground      = #eceff1
 foreground_bold = #eceff1
 cursor          = #eceff1
-background      = #263238
+background      = rgba(30, 30, 30, 0.95)
 
 # black
 color0  = #263238

@@ -3,6 +3,8 @@ alias l="ls -hl --group-directories-first --color=auto"
 alias la="ls -hla --group-directories-first --color=auto"
 alias ..="cd .."
 
+alias tree="tree -C"
+
 alias gs="git status"
 alias ga="git add"
 alias gc="git commit"
