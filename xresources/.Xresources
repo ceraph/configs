@@ -1,11 +1,11 @@
 ! Extensions
-URxvt.perl-ext-common: font-size
+!URxvt.perl-ext-common: font-size
 
 ! font-size
-URxvt.keysym.C-Up:     font-size:increase
-URxvt.keysym.C-Down:   font-size:decrease
-URxvt.keysym.C-S-Up:   font-size:incglobal
-URxvt.keysym.C-S-Down: font-size:decglobal
+!URxvt.keysym.C-Up:     font-size:increase
+!URxvt.keysym.C-Down:   font-size:decrease
+!URxvt.keysym.C-S-Up:   font-size:incglobal
+!URxvt.keysym.C-S-Down: font-size:decglobal
 
 Xcursor.theme: Breeze-Hacked
 Xcursor.size: 24
@@ -14,7 +14,6 @@ Xcursor.size: 24
 ! urxvt setup
 
 ! Xft settings -----------------------------------------------------------------
-
 !DPI scales everything
 Xft.dpi: 144
 Xft.autohint: false

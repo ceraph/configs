@@ -159,11 +159,8 @@ xmap ga <Plug>(EasyAlign)
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Spacing:
 
-set tabstop=4
-" indentation width
-set shiftwidth=4
-" tabs inserts space characters (real tab character: <C-V><Tab>)
-set expandtab
+set tabstop=8
+set shiftwidth=8
 " specific to filetypes
 autocmd FileType jade setlocal shiftwidth=2 tabstop=2
 autocmd FileType md setlocal shiftwidth=2 tabstop=2
