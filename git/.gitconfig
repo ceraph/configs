@@ -1,3 +1,5 @@
 [user]
 	email = elias.m@protonmail.com
 	name = ceraph
+[core]
+	excludesfile = /home/ceraph/.gitignore_global
