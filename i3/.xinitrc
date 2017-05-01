@@ -12,8 +12,7 @@ xset -b # turn off beep
 
 xrdb ~/.Xresources &
 
-/usr/bin/dispwin -d1 ~/T460s_WQHD_VVX14T058J02.icm
-
 xrandr --output eDP1 --primary
+xcalib ~/lg_27ud68_user.icm
 
 exec i3
