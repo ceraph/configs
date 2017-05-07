@@ -31,6 +31,7 @@ Plug 'vimwiki/vimwiki'
 Plug 'Raimondi/delimitMate'
 
 " Syntax:
+Plug 'sheerun/vim-polyglot'
 Plug 'PotatoesMaster/i3-vim-syntax'
 Plug 'vim-perl/vim-perl', { 'for': 'perl', 'do': 'make clean carp dancer highlight-all-pragmas moose test-more try-tiny' }
 Plug 'JuliaLang/julia-vim'
@@ -109,6 +110,7 @@ omap <leader><tab> <plug>(fzf-maps-o)
 " use Eclim for omnicompletion
 "let g:EclimCompletionMethod = 'omnifunc'
 map <F8> :YcmDiags<CR>
+let g:ycm_global_ycm_extra_conf = '~/.config/ycm_extra_conf.py'
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Deoplete:

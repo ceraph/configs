@@ -194,11 +194,12 @@ client.background       #ffffff
 ###
 
 exec_always --no-startup-id $HOME/.config/polybar/launch.sh
-exec --no-startup-id dropbox
-exec --no-startup-id owncloud
 #exec --no-startup-id compton -b
 exec --no-startup-id nitrogen --restore
 exec --no-startup-id unclutter --timeout 3 --ignore-scrolling --fork
 exec --no-startup-id redshift
 exec --no-startup-id nm-applet
+exec --no-startup-id dropbox
+exec --no-startup-id owncloud
+exec --no-startup-id cutegram
 #exec --no-startup-id pidgin
