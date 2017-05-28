@@ -18,9 +18,9 @@ Plug 'junegunn/fzf.vim'
 Plug 'brookhong/cscope.vim'
 
 " Completion:
-Plug 'Valloric/YouCompleteMe'
-Plug 'rdnetto/YCM-Generator', { 'branch': 'stable' }
-"Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+"Plug 'Valloric/YouCompleteMe'
+"Plug 'rdnetto/YCM-Generator', { 'branch': 'stable' }
+Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 
 " Notebook:
 Plug 'bfredl/nvim-ipy'
@@ -66,6 +66,8 @@ Plug 'morhetz/gruvbox'
 "Plug 'Raimondi/delimitMate'
 
 call plug#end()
+
+let mapleader = ','
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " VisualStyles:
@@ -115,7 +117,7 @@ let g:ycm_global_ycm_extra_conf = '~/.config/ycm_extra_conf.py'
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Deoplete:
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"let g:deoplete#enable_at_startup = 1
+let g:deoplete#enable_at_startup = 1
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " CPP Enhance Syntax Highlighting:
@@ -261,7 +263,6 @@ nnoremap  <leader>fi :call CscopeFind('i', expand('<cword>'))<CR>
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Misc:
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-let mapleader = ','
 "set noswapfile TODO: Use plugin that handles .swp files elegantly
 
 " Allow saving of files as sudo when I forgot to start vim using sudo.
