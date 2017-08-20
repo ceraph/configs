@@ -9,3 +9,6 @@ alias gs="git status"
 alias ga="git add"
 alias gc="git commit"
 alias gl="git log"
+
+alias cp="cp -i"                                                # Confirm before overwriting something
+alias df='df -h'                                                # Human-readable sizes

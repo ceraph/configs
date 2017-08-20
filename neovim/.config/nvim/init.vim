@@ -57,7 +57,8 @@ Plug 'kristijanhusak/vim-hybrid-material'
 Plug 'mkarmona/colorsbox'
 Plug 'altercation/vim-colors-solarized'
 Plug 'morhetz/gruvbox'
-
+Plug 'NLKNguyen/papercolor-theme'
+Plug 'vim-airline/vim-airline-themes'
 
 " TOTRY List:
 "Plug 'scrooloose/syntastic'
@@ -68,16 +69,21 @@ Plug 'morhetz/gruvbox'
 call plug#end()
 
 let mapleader = ','
+nnoremap <c-s> :w<cr>
+" Colemak layout
+"noremap n j
+"noremap e k
+"noremap i l
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " VisualStyles:
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 let $NVIM_TUI_ENABLE_TRUE_COLOR=1
 set termguicolors
-color hybrid_material
-set bg=dark
-let g:enable_bold_font = 1 " from hyrid-material
-let g:airline_theme = "hybrid"
+set bg=light
+color PaperColor
+"let g:enable_bold_font = 1 " from hyrid-material
+"let g:airline_theme = "hybrid"
 
 
 " Formatting
@@ -131,6 +137,7 @@ let c_no_curly_error = 1
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " always display
 set laststatus=2
+let g:airline_theme='papercolor'
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Ctags:
@@ -239,6 +246,7 @@ set incsearch
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Cscope:
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+let g:cscope_silent=1 " Turn off messages like when saving files.
 nnoremap <leader>fa :call CscopeFindInteractive(expand('<cword>'))<CR>
 nnoremap <leader>l :call ToggleLocationList()<CR>
 
