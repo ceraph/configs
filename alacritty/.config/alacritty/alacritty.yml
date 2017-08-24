@@ -1,17 +1,37 @@
 # Configuration for Alacritty, the GPU enhanced terminal emulator
+
+
+# Any items in the `env` entry below will be added as
+# environment variables. Some entries may override variables
+# set by alacritty it self.
+env:
+  # TERM env customization.
+  #
+  # If this property is not set, alacritty will set it to xterm-256color.
+  #
+  # Note that some xterm terminfo databases don't declare support for italics.
+  # You can verify this by checking for the presence of `smso` and `sitm` in
+  # `infocmp xterm-256color`.
+  TERM: xterm-256color
+
 # Window dimensions in character columns and lines
 # (changes require restart)
 dimensions:
   columns: 80
   lines: 24
 
+# Adds this many blank pixels of padding around the window
+# Units are physical pixels; this is not DPI aware.
+# (change requires restart)
+padding:
+  x: 2
+  y: 2
+
 # The FreeType rasterizer needs to know the device DPI for best results
 # (changes require restart)
 dpi:
-  #x: 96.0
-  x: 144.0
-  #y: 96.0
-  y: 144.0
+  x: 96.0
+  y: 96.0
 
 # Display tabs using this many cells (changes require restart)
 tabspaces: 8
@@ -23,29 +43,37 @@ draw_bold_text_with_bright_colors: true
 font:
   # The normal (roman) font face to use.
   normal:
-    family: Iosevka # should be "Menlo" or something on macOS.
+    family: DejaVu Sans Mono # should be "Menlo" or something on macOS.
     # Style can be specified to pick a specific face.
     # style: Regular
 
   # The bold font face
   bold:
-    family: Iosevka Heavy # should be "Menlo" or something on macOS.
+    family: DejaVu Sans Mono # should be "Menlo" or something on macOS.
     # Style can be specified to pick a specific face.
     # style: Bold
 
   # The italic font face
   italic:
-    family: Iosevka # should be "Menlo" or something on macOS.
+    family: DejaVu Sans Mono # should be "Menlo" or something on macOS.
     # Style can be specified to pick a specific face.
     # style: Italic
 
   # Point size of the font
-  size: 12.0
+  size: 13.0
+
   # Offset is the extra space around each character. offset.y can be thought of
   # as modifying the linespacing, and offset.x as modifying the letter spacing.
   offset:
-    x: -36
-    y: -1
+    x: 0.0
+    y: 0.0
+
+  # Glyph offset determines the locations of the glyphs within their cells with
+  # the default being at the bottom. Increase the x offset to move the glyph to
+  # the right, increase the y offset to move the glyph upward.
+  glyph_offset:
+    x: 0.0
+    y: 0.0
 
   # OS X only: use thin stroke font rendering. Thin strokes are suitable
   # for retina displays, but for non-retina you probably want this set to
@@ -59,39 +87,39 @@ render_timer: false
 # and cursor.background colors, otherwise invert the colors of the cursor.
 custom_cursor_colors: false
 
-# Colors (Tomorrow Night Bright)
+# Colors (Base16 Default Dark)
 colors:
   # Default colors
   primary:
-    background: '0x000000'
-    foreground: '0xeaeaea'
+    background: '0x181818'
+    foreground: '0xd8d8d8'
 
   # Colors the cursor will use if `custom_cursor_colors` is true
   cursor:
-    background: '0xffffff'
-    foreground: '0x000000'
+    text: '0xd8d8d8'
+    cursor: '0xd8d8d8'
 
   # Normal colors
   normal:
-    black:   '0x000000'
-    red:     '0xd54e53'
-    green:   '0xb9ca4a'
-    yellow:  '0xe6c547'
-    blue:    '0x7aa6da'
-    magenta: '0xc397d8'
-    cyan:    '0x70c0ba'
-    white:   '0x424242'
+    black:   '0x181818'
+    red:     '0xab4642'
+    green:   '0xa1b56c'
+    yellow:  '0xf7ca88'
+    blue:    '0x7cafc2'
+    magenta: '0xba8baf'
+    cyan:    '0x86c1b9'
+    white:   '0xd8d8d8'
 
   # Bright colors
   bright:
-    black:   '0x666666'
-    red:     '0xff3334'
-    green:   '0x9ec400'
-    yellow:  '0xe7c547'
-    blue:    '0x7aa6da'
-    magenta: '0xb77ee0'
-    cyan:    '0x54ced6'
-    white:   '0x2a2a2a'
+    black:   '0x585858'
+    red:     '0xab4642'
+    green:   '0xa1b56c'
+    yellow:  '0xf7ca88'
+    blue:    '0x7cafc2'
+    magenta: '0xba8baf'
+    cyan:    '0x86c1b9'
+    white:   '0xf8f8f8'
 
 # Visual Bell
 #
@@ -143,20 +171,33 @@ visual_bell:
 # capitalization must match exactly, and piped items must not have whitespace
 # around them.
 #
-# Either an `action` or `chars` field must be present. `chars` writes the
-# specified string every time that binding is activated. These should generally
-# be escape sequences, but they can be configured to send arbitrary strings of
-# bytes. Possible values of `action` include `Paste` and `PasteSelection`.
+# Either an `action`, `chars`, or `command` field must be present.
+#   `action` must be one of `Paste`, `PasteSelection`, `Copy`, or `Quit`.
+#   `chars` writes the specified string every time that binding is activated.
+#     These should generally be escape sequences, but they can be configured to
+#     send arbitrary strings of bytes.
+#   `command` must be a map containing a `program` string, and `args` array of
+#     strings. For example:
+#     - { ... , command: { program: "alacritty", args: ["-e", "vttest"] } }
+#
+# Want to add a binding (e.g. "PageUp") but are unsure what the X sequence
+# (e.g. "\x1b[5~") is? Open another terminal (like xterm) without tmux,
+# then run `showkey -a` to get the sequence associated to a key combination.
 key_bindings:
-  - { key: V,        mods: Control|Shift, action: Paste                  }
-  - { key: C,        mods: Command, action: Copy                         }
+  - { key: V,        mods: Control|Shift,    action: Paste               }
+  - { key: C,        mods: Control|Shift,    action: Copy                }
   - { key: Q,        mods: Command, action: Quit                         }
   - { key: W,        mods: Command, action: Quit                         }
+  - { key: Insert,   mods: Shift,   action: PasteSelection               }
   - { key: Home,                    chars: "\x1bOH",   mode: AppCursor   }
   - { key: Home,                    chars: "\x1b[1~",  mode: ~AppCursor  }
   - { key: End,                     chars: "\x1bOF",   mode: AppCursor   }
   - { key: End,                     chars: "\x1b[4~",  mode: ~AppCursor  }
+  - { key: PageUp,   mods: Shift,   chars: "\x1b[5;2~"                   }
+  - { key: PageUp,   mods: Control, chars: "\x1b[5;5~"                   }
   - { key: PageUp,                  chars: "\x1b[5~"                     }
+  - { key: PageDown, mods: Shift,   chars: "\x1b[6;2~"                   }
+  - { key: PageDown, mods: Control, chars: "\x1b[6;5~"                   }
   - { key: PageDown,                chars: "\x1b[6~"                     }
   - { key: Left,     mods: Shift,   chars: "\x1b[1;2D"                   }
   - { key: Left,     mods: Control, chars: "\x1b[1;5D"                   }
@@ -192,9 +233,9 @@ key_bindings:
   - { key: F11,                     chars: "\x1b[23~"                    }
   - { key: F12,                     chars: "\x1b[24~"                    }
   - { key: Back,                    chars: "\x7f"                        }
+  - { key: Back,     mods: Alt,     chars: "\x1b\x7f"                    }
   - { key: Insert,                  chars: "\x1b[2~"                     }
-  - { key: Delete,                  chars: "\x1b[3~",  mode: AppKeypad   }
-  - { key: Delete,                  chars: "\x1b[P",   mode: ~AppKeypad  }
+  - { key: Delete,                  chars: "\x1b[3~"                     }
 
 # Mouse bindings
 #
@@ -220,6 +261,8 @@ mouse:
 
 selection:
   semantic_escape_chars: ",│`|:\"' ()[]{}<>"
+
+hide_cursor_when_typing: false
 
 # Shell
 #
