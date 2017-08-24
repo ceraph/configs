@@ -5,18 +5,6 @@ export GTK2_RC_FILES="$HOME/.gtkrc-2.0"
 DEFAULT_SESSION='i3 --shmlog-size 0'
 
 
-source ~/.zsh/environment.zsh
-
-setxkbmap -v us -variant colemak
-#setxkbmap -option compose:lctrl
-
-xset r rate 150 20
-#xset m 3 2 # Mouse speed
-#xset -b # turn off beep
-
-#xrdb ~/.Xresources &
-
-xrandr --output eDP1 --primary
 
 userresources=$HOME/.Xresources
 sysresources=/etc/X11/xinit/.Xresources
