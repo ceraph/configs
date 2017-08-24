@@ -31,12 +31,10 @@ Plug 'vimwiki/vimwiki'
 Plug 'Raimondi/delimitMate'
 
 " Syntax:
+Plug 'octol/vim-cpp-enhanced-highlight'
 Plug 'sheerun/vim-polyglot'
 Plug 'PotatoesMaster/i3-vim-syntax'
-Plug 'vim-perl/vim-perl', { 'for': 'perl', 'do': 'make clean carp dancer highlight-all-pragmas moose test-more try-tiny' }
-Plug 'JuliaLang/julia-vim'
-Plug 'octol/vim-cpp-enhanced-highlight'
-"Plug 'arakashic/chromatica.nvim' "Not ready yet.
+"Plug 'JuliaLang/julia-vim'
 
 " LaTeX:
 
@@ -80,10 +78,11 @@ nnoremap <c-s> :w<cr>
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 let $NVIM_TUI_ENABLE_TRUE_COLOR=1
 set termguicolors
-set bg=light
-color PaperColor
-"let g:enable_bold_font = 1 " from hyrid-material
-"let g:airline_theme = "hybrid"
+set bg=dark
+color hybrid_material
+let g:enable_bold_font = 1 " from hyrid-material
+let g:enable_italic_font = 1 " from hyrid-material
+let g:airline_theme = "hybrid"
 
 
 " Formatting
@@ -128,8 +127,11 @@ let g:deoplete#enable_at_startup = 1
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " CPP Enhance Syntax Highlighting:
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+let g:cpp_member_variable_highlight = 1
+"let g:cpp_experimental_simple_template_highlight = 1
 let g:cpp_concepts_highlight = 1
 let g:cpp_class_scope_highlight = 1
+let g:cpp_class_decl_highlight = 1
 let c_no_curly_error = 1
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""
