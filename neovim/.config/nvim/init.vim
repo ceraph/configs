@@ -7,6 +7,7 @@
 call plug#begin('~/.config/nvim/plugged')
 
 Plug 'scrooloose/nerdcommenter'
+Plug 'scrooloose/nerdtree'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-fugitive'
 Plug 'majutsushi/tagbar'
@@ -16,6 +17,7 @@ Plug 'suan/vim-instant-markdown'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --bin' }
 Plug 'junegunn/fzf.vim'
 Plug 'brookhong/cscope.vim'
+Plug 'wincent/terminus'
 
 " Completion:
 "Plug 'Valloric/YouCompleteMe'
@@ -27,8 +29,8 @@ Plug 'bfredl/nvim-ipy'
 Plug 'vimwiki/vimwiki'
 
 " Autoclosing:
-"Plug 'jiangmiao/auto-pairs' " Maybe check out in the future.
-Plug 'Raimondi/delimitMate'
+Plug 'jiangmiao/auto-pairs' " Maybe check out in the future.
+"Plug 'Raimondi/delimitMate'
 
 " Syntax:
 Plug 'octol/vim-cpp-enhanced-highlight'
@@ -55,8 +57,11 @@ Plug 'kristijanhusak/vim-hybrid-material'
 Plug 'mkarmona/colorsbox'
 Plug 'altercation/vim-colors-solarized'
 Plug 'morhetz/gruvbox'
-Plug 'NLKNguyen/papercolor-theme'
 Plug 'vim-airline/vim-airline-themes'
+Plug 'vim-scripts/pyte'
+Plug 'vim-scripts/mayansmoke'
+Plug 'chriskempson/base16-vim'
+Plug 'morhetz/gruvbox'
 
 " TOTRY List:
 "Plug 'scrooloose/syntastic'
@@ -78,11 +83,7 @@ nnoremap <c-s> :w<cr>
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 let $NVIM_TUI_ENABLE_TRUE_COLOR=1
 set termguicolors
-set bg=dark
-color hybrid_material
-let g:enable_bold_font = 1 " from hyrid-material
-let g:enable_italic_font = 1 " from hyrid-material
-let g:airline_theme = "hybrid"
+color base16-gruvbox-dark-hard
 
 
 " Formatting
@@ -90,6 +91,8 @@ set linespace=2
 
 set number     " show line numbers
 set cursorline " highlights cursor line
+" Cursor. Insert mode: bar; Else: Block.
+set guicursor=n-v-c:block-Cursor/lCursor-blinkon0,i-ci:ver25-Cursor/lCursor,r-cr:hor20-Cursor/lCursor
 
 " Resize vim when window size changes
 au VimResized * exe "normal! \<c-w>="
@@ -139,7 +142,7 @@ let c_no_curly_error = 1
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " always display
 set laststatus=2
-let g:airline_theme='papercolor'
+let g:airline_theme='hybrid'
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Ctags:
@@ -188,10 +191,8 @@ set wrap
 set linebreak
 set showbreak=\ ->\ 
 set cpo+=n
-"set textwidth=80
-
-" visual feedback for line width
-let &colorcolumn="81"
+set textwidth=80
+set fo=croq
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Navigation:

@@ -275,7 +275,7 @@ exec --no-startup-id xautolock -time 10 -locker blurlock
 exec_always --no-startup-id ff-theme-util
 exec_always --no-startup-id fix_xcursor
 exec_always --no-startup-id xset r rate 150 20
-exec_always --no-startup-id dispwin $HOME/calib_file_custom.icc
+exec_always --no-startup-id dispwin $HOME/calib_spyder5express_srgb.icc
 
 
 #############################
@@ -331,6 +331,3 @@ mode "$mode_gaps_outer" {
         bindsym Shift+minus gaps outer all minus 5
         bindsym Shift+0     gaps outer all set 0
 
-        bindsym Return mode "default"
-        bindsym Escape mode "default"
-}
