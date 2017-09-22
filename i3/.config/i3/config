@@ -23,12 +23,12 @@ exec --no-startup-id pa-applet
 bindsym $mod+Ctrl+m exec pavucontrol
 
 bindcode 107 exec amixer sset Master toggle 
-bindcode 78 exec amixer sset Master 3%- 
-bindcode 127 exec amixer sset Master 3%+ 
+bindcode 78 exec amixer sset Master 2%- 
+bindcode 127 exec amixer sset Master 2%+ 
 
 bindsym XF86AudioMute exec amixer sset Master toggle 
-bindsym XF86AudioLowerVolume exec amixer sset Master 3%- 
-bindsym XF86AudioRaiseVolume exec amixer sset Master 3%+ 
+bindsym XF86AudioLowerVolume exec amixer sset Master 2%- 
+bindsym XF86AudioRaiseVolume exec amixer sset Master 2%+ 
 
 # Brightness control (laptop)
 bindcode 232 exec xbacklight -dec 5
@@ -132,7 +132,12 @@ bindsym $mod+Shift+0 move container to workspace $ws0; workspace $ws0
 # Open specific applications in floating mode.
 for_window [class="Manjaro-hello"] floating enable
 for_window [class="Manjaro Settings Manager"] floating enable border normal
+for_window [class="openshot"] floating enable
+for_window [class="deja-dup"] floating enable
 for_window [class="Nitrogen"] floating enable sticky enable border normal
+# All windows that firefox create which aren't for browsing.
+for_window [class="Firefox" window_role="^(?!browser)"] floating enable sticky enable border normal
+for_window [class="yars"] floating enable
 for_window [window_role="pop-up"] floating enable
 for_window [window_role="task_dialog"] floating enable
 for_window [urgent=latest] focus
