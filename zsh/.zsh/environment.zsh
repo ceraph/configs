@@ -2,7 +2,8 @@
 export PATH=$HOME/.local/bin:$PATH
 
 #█▓▒░ Terminal
-export TERMINAL=termite
+export TERM=xterm-256color
+export TERMINAL=alacritty
 
 #█▓▒░ Editor
 export VISUAL=nvim
