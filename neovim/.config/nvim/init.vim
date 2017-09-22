@@ -23,6 +23,10 @@ Plug 'wincent/terminus'
 "Plug 'Valloric/YouCompleteMe'
 "Plug 'rdnetto/YCM-Generator', { 'branch': 'stable' }
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+"
+" Generates a lot of default code (classes, licenses etc.) for many languages.
+Plug 'SirVer/ultisnips' " Snippet engine.
+Plug 'honza/vim-snippets' " Actual snippets.
 
 " Notebook:
 Plug 'bfredl/nvim-ipy'
@@ -99,7 +103,7 @@ au VimResized * exe "normal! \<c-w>="
 
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" FZF:
+" Fzf:
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 let g:fzf_history_dir = '~/.local/share/fzf-history'
 nmap <C-p> :FZF<CR>
@@ -108,6 +112,18 @@ nmap <C-p> :FZF<CR>
 nmap <leader><tab> <plug>(fzf-maps-n)
 xmap <leader><tab> <plug>(fzf-maps-x)
 omap <leader><tab> <plug>(fzf-maps-o)
+
+nnoremap <leader>b :Buffer<CR>
+
+function! s:fzf_statusline()
+  " Override statusline as you like
+  highlight fzf1 ctermfg=161 ctermbg=251
+  highlight fzf2 ctermfg=23 ctermbg=251
+  highlight fzf3 ctermfg=237 ctermbg=251
+  setlocal statusline=%#fzf1#\ >\ %#fzf2#fz%#fzf3#f
+endfunction
+
+autocmd! User FzfStatusLine call <SID>fzf_statusline()
 
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -210,10 +226,10 @@ function! TmuxMove(direction)
         end
 endfunction
 
-nnoremap <silent> <c-h> :call TmuxMove('h')<cr>
-nnoremap <silent> <c-j> :call TmuxMove('j')<cr>
-nnoremap <silent> <c-k> :call TmuxMove('k')<cr>
-nnoremap <silent> <c-l> :call TmuxMove('l')<cr>
+nnoremap <silent> <c-left> :call TmuxMove('h')<cr>
+nnoremap <silent> <c-down> :call TmuxMove('j')<cr>
+nnoremap <silent> <c-up> :call TmuxMove('k')<cr>
+nnoremap <silent> <c-right> :call TmuxMove('l')<cr>
 
 " easier moving arround splits
 "nnoremap <C-h> <C-w>h
@@ -307,3 +323,6 @@ endif
 
 "Close XML tags
 imap <silent> <C-c> </<C-X><C-O><C-X>
+
+" Defined in 'autoload/bclose.vim'. Closes buffer without deleting window.
+nmap <C-W>! <Plug>Kwbd 
