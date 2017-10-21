@@ -6,17 +6,15 @@
 
 call plug#begin('~/.config/nvim/plugged')
 
-Plug 'scrooloose/nerdcommenter'
-Plug 'scrooloose/nerdtree'
-Plug 'tpope/vim-surround'
-Plug 'tpope/vim-fugitive'
-Plug 'majutsushi/tagbar'
-Plug 'vim-airline/vim-airline'
-Plug 'vim-airline/vim-airline-themes'
-Plug 'suan/vim-instant-markdown'
+Plug 'itchyny/lightline.vim'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --bin' }
 Plug 'junegunn/fzf.vim'
-Plug 'brookhong/cscope.vim'
+Plug 'majutsushi/tagbar'
+Plug 'scrooloose/nerdcommenter'
+Plug 'scrooloose/nerdtree'
+Plug 'suan/vim-instant-markdown'
+Plug 'tpope/vim-fugitive'
+Plug 'tpope/vim-surround'
 Plug 'wincent/terminus'
 
 " Completion:
@@ -55,17 +53,17 @@ Plug 'PotatoesMaster/i3-vim-syntax'
 Plug 'junegunn/vim-easy-align'
 
 " Colorschemes:
-Plug 'scwood/vim-hybrid'
-Plug 'lifepillar/vim-solarized8'
-Plug 'kristijanhusak/vim-hybrid-material'
-Plug 'mkarmona/colorsbox'
 Plug 'altercation/vim-colors-solarized'
-Plug 'morhetz/gruvbox'
-Plug 'vim-airline/vim-airline-themes'
-Plug 'vim-scripts/pyte'
-Plug 'vim-scripts/mayansmoke'
 Plug 'chriskempson/base16-vim'
+Plug 'kristijanhusak/vim-hybrid-material'
+Plug 'lifepillar/vim-solarized8'
+Plug 'mkarmona/colorsbox'
 Plug 'morhetz/gruvbox'
+Plug 'morhetz/gruvbox'
+Plug 'scwood/vim-hybrid'
+Plug 'vim-airline/vim-airline-themes'
+Plug 'vim-scripts/mayansmoke'
+Plug 'vim-scripts/pyte'
 
 " TOTRY List:
 "Plug 'scrooloose/syntastic'
@@ -93,7 +91,7 @@ color base16-gruvbox-dark-hard
 " Formatting
 set linespace=2
 
-set number     " show line numbers
+"set number " Show line numbers.
 set cursorline " highlights cursor line
 " Cursor. Insert mode: bar; Else: Block.
 set guicursor=n-v-c:block-Cursor/lCursor-blinkon0,i-ci:ver25-Cursor/lCursor,r-cr:hor20-Cursor/lCursor
@@ -113,7 +111,8 @@ nmap <leader><tab> <plug>(fzf-maps-n)
 xmap <leader><tab> <plug>(fzf-maps-x)
 omap <leader><tab> <plug>(fzf-maps-o)
 
-nnoremap <leader>b :Buffer<CR>
+nnoremap ; :Buffer<CR>
+nnoremap <leader>t :Tags<CR>
 
 function! s:fzf_statusline()
   " Override statusline as you like
@@ -144,6 +143,29 @@ let g:ycm_global_ycm_extra_conf = '~/.config/ycm_extra_conf.py'
 let g:deoplete#enable_at_startup = 1
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Lightline:
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+set noshowmode " Plugin shows it already.
+let g:lightline = {
+	\ 'colorscheme': 'jellybeans',
+	\ 'active': {
+	\ 	'left': [ [ 'mode', 'paste' ],
+	\ 	          [ 'readonly', 'filename' ] ],
+	\ 	'right': [ [ 'lineinfo' ],
+	\	           [ 'percent' ], ],
+	\ },
+	\ 'component_function': {
+	\ 	'filename': 'LightlineFilename',
+	\ },
+	\ }
+
+function! LightlineFilename()
+	let filename = expand('%:t') !=# '' ? expand('%:t') : '[No Name]'
+	let modified = &modified ? ' +' : ''
+	return filename . modified
+endfunction
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " CPP Enhance Syntax Highlighting:
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 let g:cpp_member_variable_highlight = 1
@@ -152,13 +174,6 @@ let g:cpp_concepts_highlight = 1
 let g:cpp_class_scope_highlight = 1
 let g:cpp_class_decl_highlight = 1
 let c_no_curly_error = 1
-
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Airline:
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" always display
-set laststatus=2
-let g:airline_theme='hybrid'
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Ctags:
@@ -203,7 +218,7 @@ autocmd FileType html setlocal shiftwidth=2 tabstop=2
 nnoremap <leader>V V']
 
 " breaks and line wrapping
-set wrap
+"set wrap
 set linebreak
 set showbreak=\ ->\ 
 set cpo+=n
@@ -263,31 +278,6 @@ set nowrapscan
 set incsearch
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Cscope:
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-let g:cscope_silent=1 " Turn off messages like when saving files.
-nnoremap <leader>fa :call CscopeFindInteractive(expand('<cword>'))<CR>
-nnoremap <leader>l :call ToggleLocationList()<CR>
-
-" s: Find this C symbol
-nnoremap  <leader>fs :call CscopeFind('s', expand('<cword>'))<CR>
-" g: Find this definition
-nnoremap  <leader>fg :call CscopeFind('g', expand('<cword>'))<CR>
-" d: Find functions called by this function
-nnoremap  <leader>fd :call CscopeFind('d', expand('<cword>'))<CR>
-" c: Find functions calling this function
-nnoremap  <leader>fc :call CscopeFind('c', expand('<cword>'))<CR>
-" t: Find this text string
-nnoremap  <leader>ft :call CscopeFind('t', expand('<cword>'))<CR>
-" e: Find this egrep pattern
-nnoremap  <leader>fe :call CscopeFind('e', expand('<cword>'))<CR>
-" f: Find this file
-nnoremap  <leader>ff :call CscopeFind('f', expand('<cword>'))<CR>
-" i: Find files #including this file
-nnoremap  <leader>fi :call CscopeFind('i', expand('<cword>'))<CR>
-
-
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Misc:
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "set noswapfile TODO: Use plugin that handles .swp files elegantly
@@ -326,3 +316,7 @@ imap <silent> <C-c> </<C-X><C-O><C-X>
 
 " Defined in 'autoload/bclose.vim'. Closes buffer without deleting window.
 nmap <C-W>! <Plug>Kwbd 
+
+" Highlight background of columns that are > textwidth.
+execute "set colorcolumn=" . join(map(range(1,259), '"+" . v:val'), ',')
+highlight ColorColumn ctermbg=235 guibg=#1B1E1F
