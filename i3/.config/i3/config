@@ -138,7 +138,8 @@ for_window [class="Nitrogen"] floating enable sticky enable border normal
 # All windows that firefox create which aren't for browsing.
 for_window [class="Firefox" window_role="^(?!browser)"] floating enable sticky enable border normal
 for_window [class="yars"] floating enable border normal
-for_window [class="Skype Preview"] floating enable border normal
+for_window [class="Skype"] floating enable border normal
+for_window [class="SmartGit"] border normal
 for_window [window_role="pop-up"] floating enable
 for_window [window_role="task_dialog"] floating enable
 for_window [urgent=latest] focus
@@ -228,25 +229,6 @@ new_float normal
 # Power Management
 ###
 
-set $locker i3lock -e -i /home/ceraph/pics/mountains_sea_ocean4k.png
-
-set $mode_system (l)ock, (e)xit, switch_(u)ser, (s)uspend, (h)ibernate, (r)eboot, (Shift+s)hutdown
-mode "$mode_system" {
-    bindsym l exec --no-startup-id i3exit lock, mode "default"
-    bindsym s exec --no-startup-id i3exit suspend, mode "default"
-    bindsym u exec --no-startup-id i3exit switch_user, mode "default"
-    bindsym e exec --no-startup-id i3exit logout, mode "default"
-    bindsym h exec --no-startup-id i3exit hibernate, mode "default"
-    bindsym r exec --no-startup-id i3exit reboot, mode "default"
-    bindsym Shift+s exec --no-startup-id i3exit shutdown, mode "default"
-
-    # exit system mode: "Enter" or "Escape"
-    bindsym Return mode "default"
-    bindsym Escape mode "default"
-}
-
-bindsym $mod+End mode "$mode_system"
-
 # Theme colors
 # class                 border      backgr.     text        indic.      child_border
 client.focused          $i3_color8  $i3_color8  $i3_color11 $i3_color12
@@ -260,7 +242,7 @@ client.background       $i3_background
 ###
 # Shortcuts
 ###
-bindsym $mod+Ctrl+x --release exec --no-startup-id 
+#bindsym $mod+l --release exec --no-startup-id xautolock -locknow
 
 ###
 # startup
@@ -278,9 +260,9 @@ exec --no-startup-id unclutter --timeout 3 --ignore-scrolling --fork
 exec --no-startup-id nm-applet
 exec --no-startup-id dropbox
 exec --no-startup-id clipit
+#exec --no-startup-id xautolock -time 30 -secure -locker blurlock
 #exec --no-startup-id cutegram
 #exec --no-startup-id start_conky_maia
-exec --no-startup-id xautolock -time 10 -locker blurlock
 exec --no-startup-id pasystray
 
 
