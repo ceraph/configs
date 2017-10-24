@@ -10,11 +10,11 @@ Plug 'itchyny/lightline.vim'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --bin' }
 Plug 'junegunn/fzf.vim'
 Plug 'majutsushi/tagbar'
-Plug 'scrooloose/nerdcommenter'
 Plug 'scrooloose/nerdtree'
 Plug 'suan/vim-instant-markdown'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-surround'
+Plug 'tpope/vim-commentary'
 Plug 'wincent/terminus'
 
 " Completion:
@@ -218,9 +218,9 @@ autocmd FileType html setlocal shiftwidth=2 tabstop=2
 nnoremap <leader>V V']
 
 " breaks and line wrapping
-"set wrap
-set linebreak
-set showbreak=\ ->\ 
+set nowrap
+"set linebreak
+"set showbreak=\ ->\ 
 set cpo+=n
 set textwidth=80
 set fo=croq
