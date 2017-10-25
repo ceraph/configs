@@ -213,6 +213,7 @@ set shiftwidth=8
 autocmd FileType jade setlocal shiftwidth=2 tabstop=2
 autocmd FileType md setlocal shiftwidth=2 tabstop=2
 autocmd FileType html setlocal shiftwidth=2 tabstop=2
+autocmd FileType xml setlocal textwidth=0
 
 " reselect pasted stuff
 nnoremap <leader>V V']
@@ -276,6 +277,18 @@ set hlsearch
 set showmatch
 set nowrapscan
 set incsearch
+
+" Search for selected text, forwards or backwards.
+vnoremap <silent> * :<C-U>
+	\let old_reg=getreg('"')<Bar>let old_regtype=getregtype('"')<CR>
+	\gvy/<C-R><C-R>=substitute(
+	\escape(@", '/\.*$^~['), '\_s\+', '\\_s\\+', 'g')<CR><CR>
+	\gV:call setreg('"', old_reg, old_regtype)<CR>
+vnoremap <silent> # :<C-U>
+	\let old_reg=getreg('"')<Bar>let old_regtype=getregtype('"')<CR>
+	\gvy?<C-R><C-R>=substitute(
+	\escape(@", '?\.*$^~['), '\_s\+', '\\_s\\+', 'g')<CR><CR>
+	\gV:call setreg('"', old_reg, old_regtype)<CR>
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Misc:
