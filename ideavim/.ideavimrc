@@ -1,0 +1,4 @@
+source ~/.config/nvim/init.vim
+
+nnoremap <C-Left> :action PrevSplitter<CR>
+nnoremap <C-Right> :action NextSplitter<CR>
