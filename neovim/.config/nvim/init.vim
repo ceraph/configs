@@ -21,10 +21,11 @@ Plug 'wincent/terminus'
 "Plug 'Valloric/YouCompleteMe'
 "Plug 'rdnetto/YCM-Generator', { 'branch': 'stable' }
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+Plug 'zchee/deoplete-clang'
 "
 " Generates a lot of default code (classes, licenses etc.) for many languages.
-Plug 'SirVer/ultisnips' " Snippet engine.
-Plug 'honza/vim-snippets' " Actual snippets.
+" Plug 'SirVer/ultisnips' " Snippet engine.
+" Plug 'honza/vim-snippets' " Actual snippets.
 
 " Notebook:
 Plug 'bfredl/nvim-ipy'
@@ -141,6 +142,10 @@ let g:ycm_global_ycm_extra_conf = '~/.config/ycm_extra_conf.py'
 " Deoplete:
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 let g:deoplete#enable_at_startup = 1
+
+" deoplete-clang
+let g:deoplete#sources#clang#libclang_path = '/usr/lib/libclang.so'
+let g:deoplete#sources#clang#clang_header = '/usr/lib/clang'
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Lightline:
